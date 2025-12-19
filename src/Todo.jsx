@@ -7,27 +7,27 @@ function Todo() {
   const [editId, setEditId] = useState(null)
 
   const loadTodos = async () => {
-    const res = await axios.get('http://localhost:5002/get')
+    const res = await axios.get('http://3.80.221.204:5002/get')
     setTodos(res.data)
   }
 
   const saveTodo = async () => {
     if (editId) {
-      await axios.put(`http://localhost:5002/put/${editId}`, form)
+      await axios.put(`http://3.80.221.204:5002/put/${editId}`, form)
     } else {
-      await axios.post('http://localhost:5002/post', form)
+      await axios.post('http://3.80.221.204:5002/post', form)
     }
     resetForm()
     loadTodos()
   }
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5002/delete/${id}`)
+    await axios.delete(`http://3.80.221.204:5002/delete/${id}`)
     loadTodos()
   }
 
   const markDone = async (id) => {
-    await axios.patch(`http://localhost:5002/patch/${id}`, { status: 'completed' })
+    await axios.patch(`http://3.80.221.204:5002/patch/${id}`, { status: 'completed' })
     loadTodos()
   }
 
